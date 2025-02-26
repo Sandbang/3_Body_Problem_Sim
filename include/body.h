@@ -1,7 +1,7 @@
 #include "raylib.h"
 
 const double moonmass = 7.348e22;
-const double rem = 384.4e7;
+const double dist = 384.4e7;
 const double G = 6.67e-11;
 const double mtp = 1e7;
 
