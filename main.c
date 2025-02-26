@@ -30,9 +30,9 @@ int main() {
     double dt = 3600;
     double t = 3600;
     //position
-    red.pos.x = rem; red.pos.y = rem;
-    blue.pos.x = rem; blue.pos.y = 2*rem;
-    green.pos.x = 4 * rem; green.pos.y = 1.5 * rem;
+    red.pos.x = 4 * rem; red.pos.y = rem;
+    blue.pos.x = 3.1*rem; blue.pos.y = 2 * rem;
+    green.pos.x = 4 * rem; green.pos.y = 2 * rem;
     struct MyVector2 rRB;
     struct MyVector2 rRG;
     struct MyVector2 rBG;
@@ -43,18 +43,18 @@ int main() {
 
     while(!WindowShouldClose()){
         rRB = vectorSubtract(blue.pos, red.pos);
-        printf("Here is rRB.x: %f\n", rRB.x/mtp); printf("Here is rRB.y: %f\n", rRB.y/mtp);
+        //printf("Here is rRB.x: %f\n", rRB.x/mtp); printf("Here is rRB.y: %f\n", rRB.y/mtp);
         rRG = vectorSubtract(green.pos, red.pos);
-        printf("Here is rRG.x: %f\n", rRG.x/mtp); printf("Here is rRG.y: %f\n", rRG.y/mtp);
+        //printf("Here is rRG.x: %f\n", rRG.x/mtp); printf("Here is rRG.y: %f\n", rRG.y/mtp);
         rBG = vectorSubtract(green.pos, blue.pos);
-        printf("Here is rBG.x: %f\n", rBG.x/mtp); printf("Here is rBG.y: %f\n", rBG.y/mtp);
+        //printf("Here is rBG.x: %f\n", rBG.x/mtp); printf("Here is rBG.y: %f\n", rBG.y/mtp);
 
         FRB = getForce(rRB, red.m, blue.m);
-        printf("Here is FRB.x: %f\n", FRB.x); printf("Here is FRB.y: %f\n", FRB.y);
+        //printf("Here is FRB.x: %f\n", FRB.x); printf("Here is FRB.y: %f\n", FRB.y);
         FRG = getForce(rRG, red.m, green.m);
-        printf("Here is FRG.x: %f\n", FRG.x); printf("Here is FRG.y: %f\n", FRG.y);
+        //printf("Here is FRG.x: %f\n", FRG.x); printf("Here is FRG.y: %f\n", FRG.y);
         FBG = getForce(rBG, blue.m, green.m);
-        printf("Here is FBG.x: %f\n", FBG.x); printf("Here is FBG.y: %f\n", FBG.y);
+        //printf("Here is FBG.x: %f\n", FBG.x); printf("Here is FBG.y: %f\n", FBG.y);
 
 
 
@@ -66,12 +66,12 @@ int main() {
 
 
         
-        red.pos = vectorAdd(red.pos, vectorMultDouble(red.p, dt/red.m));
-        printf("Here is red.pos.x: %f\n", red.pos.x/mtp); printf("Here is red.pos.y: %f\n", red.pos.y/mtp);
-        blue.pos = vectorAdd(blue.pos, vectorMultDouble(blue.p, dt/blue.m));
-        printf("Here is blue.pos.x: %f\n", blue.pos.x/mtp); printf("Here is blue.pos.y: %f\n", blue.pos.y/mtp);
-        green.pos = vectorAdd(green.pos, vectorMultDouble(green.p, dt/green.m));
-        printf("Here is green.pos.x: %f\n", green.pos.x/mtp); printf("Here is green.pos.y: %f\n", green.pos.y/mtp);
+        red.pos = vectorSubtract(red.pos, vectorMultDouble(red.p, dt/red.m));
+        //printf("Here is red.pos.x: %f\n", red.pos.x/mtp); printf("Here is red.pos.y: %f\n", red.pos.y/mtp);
+        blue.pos = vectorSubtract(blue.pos, vectorMultDouble(blue.p, dt/blue.m));
+        //printf("Here is blue.pos.x: %f\n", blue.pos.x/mtp); printf("Here is blue.pos.y: %f\n", blue.pos.y/mtp);
+        green.pos = vectorSubtract(green.pos, vectorMultDouble(green.p, dt/green.m));
+        //printf("Here is green.pos.x: %f\n", green.pos.x/mtp); printf("Here is green.pos.y: %f\n", green.pos.y/mtp);
 
 
 
@@ -83,7 +83,7 @@ int main() {
             DrawTexture(green.color, green.pos.x/mtp, green.pos.y/mtp, WHITE);
             DrawTexture(blue.color, blue.pos.x/mtp, blue.pos.y/mtp, WHITE);
         EndDrawing();
-        Sleep(10);
+        Sleep(1);
     }
     CloseWindow();
     return 0;
