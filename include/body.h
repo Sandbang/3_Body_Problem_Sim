@@ -5,10 +5,10 @@ const double dist = 384.4e7;
 const double G = 6.67e-11;
 const double mtp = 1e7;
 */
-#define moonmass 7.348e22
-#define dist 384.4e7
+#define moonmass 7.348e23
+#define dist 384.4e5
 #define G 6.67e-11
-#define mtp 1e7
+#define mtp 1e6
 struct MyVector2 {
    double x;
    double y;
