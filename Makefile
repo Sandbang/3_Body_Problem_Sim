@@ -2,7 +2,7 @@ ifeq ($(OS),Windows_NT)
 	OPENGLFLAG = -lopengl32
 	WINLIBS = -lgdi32 -lwinmm
 	OUT = sim.exe
-	LDFLAGS = -Llib/
+	LDFLAGS = -Llib/ -lraylib
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S), Darwin)
@@ -15,7 +15,7 @@ else
 	ifeq ($(UNAME_S), Linux)
 		OPENGLFLAG = -lGL
 		WINLIBS = 
-		LDFLAGS = -Llib/
+		LDFLAGS = -Llib/ -lraylib
 		OUT = sim
 	endif
 endif
