@@ -13,12 +13,12 @@ struct MyVector2 {
    double x;
    double y;
 };
-typedef struct Body {
+typedef struct body {
     struct MyVector2 pos;
     struct MyVector2 p;
     double m;
     Texture2D color;
-};
+} Body;
 
 struct MyVector2 vectorSubtract(struct MyVector2 a, struct MyVector2 b);
 struct MyVector2 vectorAdd(struct MyVector2 a, struct MyVector2 b);
