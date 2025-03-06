@@ -1,6 +1,6 @@
 #include "include/raylib.h"
 #include "include/body.h"
-void setup(struct Body *red, struct Body *green, struct Body *blue) {
+void setup(Body *red, Body *green, Body *blue) {
     int shape = 0;
     Vector2 cursorPos;
 

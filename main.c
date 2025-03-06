@@ -13,9 +13,9 @@
 int main() {
     
     InitWindow(1920, 1080, "Three Body Problem");
-    struct Body red;
-    struct Body blue;
-    struct Body green;
+    Body red;
+    Body blue;
+    Body green;
     green.color = LoadTexture("assets/green.png");
     red.color = LoadTexture("assets/red.png");
     blue.color = LoadTexture("assets/blue.png");
