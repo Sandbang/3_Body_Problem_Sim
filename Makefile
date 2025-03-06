@@ -1,31 +1,26 @@
 ifeq ($(OS),Windows_NT)
-	OPENGLFLAG = -lopengl32
-	WINLIBS = -lgdi32 -lwinmm
+	LDFLAGS = -Llib/ -lraylib -lopengl32 -lgdi32 -lwinmm
 	OUT = sim.exe
-	LDFLAGS = -Llib/ -lraylib
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S), Darwin)
-		OPENGLFLAG = -framework OpenGL
-		WINLIBS = 
-		LDFLAGS = -L/opt/homebrew/lib -lraylib
-		OUT = sim
+		LDFLAGS = -L/opt/homebrew/lib -lraylib -framework OpenGL
 	endif
 	
 	ifeq ($(UNAME_S), Linux)
-		OPENGLFLAG = -lGL
-		WINLIBS = 
-		LDFLAGS = -Llib/ -lraylib
-		OUT = sim
+		LDFLAGS = -Llib/ -lraylib -lGL
 	endif
+	OUT = sim
 endif
 
 CC = gcc
+CFLAGS = -O1 -Wall -std=c99 -Wno-missing-braces
+BUILD = main.c body.c setup.c
 
 all: sim
 
 sim:
-	$(CC) main.c body.c setup.c -o $(OUT) -O1 -Wall -std=c99 -Wno-missing-braces -Iinclude/ $(LDFLAGS) $(OPENGLFLAG) $(WINLIBS)
+	$(CC) $(BUILD) -o $(OUT) $(CFlAGS) -Iinclude/ $(LDFLAGS)
 
 clean:
 	rm -f $(OUT)
